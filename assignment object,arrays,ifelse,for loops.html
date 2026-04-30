@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>To-Do App</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+.container {
+    width: 400px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 10px;
+    background: #eee;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>To-Do App</h2>
+
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
+
+    <div id="taskList"></div>
+</div>
+
+<script>
+// ARRAY
+var todos = [];
+
+// ADD TASK FUNCTION
+function addTask() {
+    var input = document.getElementById("taskInput");
+    var taskName = input.value;
+
+    // IF-ELSE
+    if (taskName === "") {
+        alert("Task cannot be empty");
+        return;
+    }
+
+    // OBJECT
+    var task = {
+        id: todos.length + 1,
+        name: taskName,
+        completed: false
+    };
+
+    todos.push(task);
+
+    input.value = "";
+    showTasks();
+}
+
+// SHOW TASKS
+function showTasks() {
+    var list = document.getElementById("taskList");
+    list.innerHTML = "";
+
+    // FOR LOOP
+    for (var i = 0; i < todos.length; i++) {
+
+        var taskDiv = document.createElement("div");
+        taskDiv.className = "task";
+
+        // IF-ELSE
+        if (todos[i].completed) {
+            taskDiv.classList.add("completed");
+        }
+
+        taskDiv.innerHTML = `
+            <span>${todos[i].name}</span>
+            <div>
+                <button onclick="completeTask(${todos[i].id})">✔</button>
+                <button onclick="deleteTask(${todos[i].id})">❌</button>
+            </div>
+        `;
+
+        list.appendChild(taskDiv);
+    }
+}
+
+// COMPLETE TASK
+function completeTask(id) {
+    for (var i = 0; i < todos.length; i++) {
+        if (todos[i].id === id) {
+            todos[i].completed = true;
+        }
+    }
+    showTasks();
+}
+
+// DELETE TASK
+function deleteTask(id) {
+    for (var i = 0; i < todos.length; i++) {
+        if (todos[i].id === id) {
+            todos.splice(i, 1);
+        }
+    }
+    showTasks();
+}
+</script>
+
+</body>
+</html>

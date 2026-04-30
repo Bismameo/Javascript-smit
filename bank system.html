@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style></style>
+<body>
+    <bank system>
+        <account>
+            <name>John Doe</name>
+            <balance>1000</balance>
+        </account>
+        <account>
+            <name>Jane Smith</name>
+            <balance>2000</balance>
+        </account>
+    </bank>
+
+    <script>
+        // widthdraw ammount using prompt
+        function withdraw() {
+            const name = prompt("Enter your name:");
+            const amount = parseFloat(prompt("Enter the amount to withdraw:"));
+
+            const accounts = document.querySelectorAll("account");
+            let accountFound = false;
+
+            accounts.forEach(account => {
+                const accountName = account.querySelector("name").textContent;
+                if (accountName === name) {
+                    accountFound = true;
+                    const balanceElement = account.querySelector("balance");
+                    let balance = parseFloat(balanceElement.textContent);
+
+                    if (amount > balance) {
+                        alert("Insufficient funds!");
+                    } else {
+                        balance -= amount;
+                        balanceElement.textContent = balance.toString();
+                        alert(`Withdrawal successful! New balance: ${balance}`);
+                    }
+                }
+            });
+
+            if (!accountFound) {
+                alert("Account not found!");
+            }
+        }
+        // if balance sufficient deduct the amount from balance and update the balance in the account element
+        var withdrawButton = document.createElement("button");
+        withdrawButton.textContent = "Withdraw";
+        withdrawButton.addEventListener("click", withdraw);
+        document.body.appendChild(withdrawButton);
+            
+
+
+    </script>
+</body>
+</html>
