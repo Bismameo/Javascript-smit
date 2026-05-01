@@ -316,3 +316,51 @@ function calculateTotal(cart) {
     return total;
 }
 console.log("Total: Rs " + calculateTotal(cart));   
+
+function updateQuantity(cart, productName, newQuantity) {
+    const product = cart.find(item => item.name === productName);
+    if (product) {
+        product.quantity = newQuantity;
+        console.log("Updated " + productName + " quantity to " + newQuantity);
+    } else {
+        console.log("Product not found: " + productName);
+    }
+}
+updateQuantity(cart, "product1", 5);
+console.log("Total after update: Rs " + calculateTotal(cart));
+
+
+// question no 14:
+//  Movie Recommendation System: Show movies with rating greater than 3.
+const movies = [
+    { title: "Movie A", rating: 4.5 },
+    { title: "Movie B", rating: 3.2 },
+    { title: "Movie C", rating: 2.8 },
+    { title: "Movie D", rating: 4.0 }
+];
+function recommendMovies(movies) {
+    const recommended = movies.filter(movie => movie.rating > 3);
+    return recommended;
+}
+const recommendedMovies = recommendMovies(movies);
+console.log("Recommended Movies:");
+recommendedMovies.forEach(movie => {
+    console.log("- " + movie.title + " (Rating: " + movie.rating + ")");
+});
+
+// question no 15:
+// Attendance System: Count total present students.
+const students = [
+    { name: "Bisma", isPresent: true },
+    { name: "Hifza", isPresent: false },
+    { name: "Rabia", isPresent: true },
+    { name: "Khatija", isPresent: false }
+];
+function countPresent(students) {
+    const presentCount = students.filter(student => student.isPresent).length;
+    return presentCount;
+}
+console.log("Total present students: " + countPresent(students));
+
+
+
