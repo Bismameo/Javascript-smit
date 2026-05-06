@@ -96,7 +96,10 @@
 //     }
 
 
-// // initialize , condition , update
+// // Map Method Example: print helloworld 10 times in the browser
+// Array(10).fill("helloworld").map(text => document.write(text + "<br>"));
+
+// initialize , condition , update
 
 
 
