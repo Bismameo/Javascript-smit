@@ -64,6 +64,28 @@
     <script>
         //  const array = [1, 2, 3, 4, 5 , 6 ,7 ,8 ,9 ,10];
         //   const arr = array.map(() => "Hello World <br>");
+        async function getData(){
+    try {
+    const response = await fetch("https://dummyjson.com/carts");
+    const data = await response .json();
+
+
+    const DataMap = newMap();
+
+    user.foreach(user => {
+       
+        userMap.set(user.id,user)
+    });
+
+
+
+     console.log(DataMap.get(1))
+   return DataMap;
+}  catch(error) {
+    console.error('error fetching data:',error);
+}
+}
+getData();
         const array =[
             {title: "bridal jewelry", description: "elegant design", price: "$19.99", image: "https://i.pinimg.com/736x/1f/41/70/1f4170f6d26474343695099774a3a5e4.jpg"},
             {title: "bridal jewelry", description: "elegant design", price: "$29.99", image: "https://i.pinimg.com/736x/1f/41/70/1f4170f6d26474343695099774a3a5e4.jpg"},

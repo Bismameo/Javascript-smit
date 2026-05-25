@@ -13,10 +13,23 @@ check
  .catch((error) => console.error(error));
 
 
- let password = new Promise ((login, rejected)){
-    let value = true
- }
 
+
+//  ///////////////////////////////////////////////////////////////////////////////
+
+ let password = new Promise ((login, rejected) => {
+    let value = true 
+    if (value) 
+        {
+        login ("login successful")
+    }   
+ else {
+        rejected ("login failed")
+        
+    }
+ })
+.then((result) => console.log(result))
+.catch((error) => console.error(error));    
 
 
  

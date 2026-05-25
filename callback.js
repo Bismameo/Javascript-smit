@@ -81,6 +81,6 @@ placeOrder(function(status){
 // }
 // checkout([], function(message){
 //     console.log(message);
-// });
+// }
 
 
